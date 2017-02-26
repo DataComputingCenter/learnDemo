@@ -1,0 +1,57 @@
+﻿<Window x:Class="MvvmDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MvvmDemo"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0"
+                  Margin="5"
+                  VerticalAlignment="Stretch"
+                  HorizontalAlignment="Left">
+            <MenuItem Header="File">
+            <MenuItem Command="{Binding CreateAlbum}"
+                              Header="NewAlbum" />
+            <MenuItem Command="{Binding DeleteAlbum}"
+                              Header="DeleteAlbum" />
+            </MenuItem>
+        </Menu>
+        <DataGrid x:Name="AzureDataGrid"
+                  Grid.Row="1"
+                  RenderOptions.ClearTypeHint="Enabled"
+                  TextOptions.TextFormattingMode="Display"
+                  Margin="5"
+                  ItemsSource="{Binding Path=Albums}"
+                  AutoGenerateColumns="False"
+                  SelectedItem="{Binding Path=Album}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Title"
+                                    Binding="{Binding Title}" />
+                <DataGridTextColumn Header="Artist"
+                                    Binding="{Binding Artist.Name}" />
+                <DataGridTextColumn Header="Genre"
+                                    Binding="{Binding Genre.Name}" />
+                <DataGridTemplateColumn Header="Price">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ProgressBar x:Name="PriceProgressBar"
+                                                       Value="{Binding Price}"
+                                                       Minimum="0"
+                                                       Maximum="20"
+                                                       Background="Transparent"
+                                                       VerticalAlignment="Center"
+                                                       Height="20"
+                                                       Margin="5 2" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
