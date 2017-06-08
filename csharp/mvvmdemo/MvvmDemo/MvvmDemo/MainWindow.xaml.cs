@@ -27,5 +27,9 @@ namespace MvvmDemo
             _viewModel = new MainWindowViewModel();
             this.DataContext = _viewModel;
         }
+
+        private void AzureDataGrid_CurrentCellChanged(object sender, EventArgs e)
+        {
+        }
     }
 }

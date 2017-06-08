@@ -29,7 +29,7 @@
                   Margin="5"
                   ItemsSource="{Binding Path=Albums}"
                   AutoGenerateColumns="False"
-                  SelectedItem="{Binding Path=Album}">
+                  SelectedItem="{Binding Path=Album}" CurrentCellChanged="AzureDataGrid_CurrentCellChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Title"
                                     Binding="{Binding Title}" />
