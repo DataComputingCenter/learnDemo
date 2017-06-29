@@ -1,0 +1,35 @@
+// MyComTest.idl : IDL source for MyComTest
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (MyComTest.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(A9541901-AC00-4F4C-B13D-320247F14FDC),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface ITest : IDispatch{
+	[id(1)] HRESULT AddNum([in] LONG num1, [in] LONG num2, [out,retval] LONG* numRst);
+};
+[
+	uuid(8A16DBC9-358E-48C3-8DC1-3D0A3C9553D1),
+	version(1.0),
+]
+library MyComTestLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(BB2F2E3E-0096-418C-A866-DC5C21DDD532)		
+	]
+	coclass Test
+	{
+		[default] interface ITest;
+	};
+};
+

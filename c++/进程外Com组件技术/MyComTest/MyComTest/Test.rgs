@@ -1,0 +1,26 @@
+HKCR
+{
+	MyComTest.Test.1 = s 'Test Class'
+	{
+		CLSID = s '{BB2F2E3E-0096-418C-A866-DC5C21DDD532}'
+	}
+	MyComTest.Test = s 'Test Class'
+	{		
+		CurVer = s 'MyComTest.Test.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {BB2F2E3E-0096-418C-A866-DC5C21DDD532} = s 'Test Class'
+		{
+			ProgID = s 'MyComTest.Test.1'
+			VersionIndependentProgID = s 'MyComTest.Test'
+			ForceRemove Programmable
+			LocalServer32 = s '%MODULE%'
+			{
+				val ServerExecutable = s '%MODULE_RAW%'
+			}
+			TypeLib = s '{8A16DBC9-358E-48C3-8DC1-3D0A3C9553D1}'
+			Version = s '1.0'
+		}
+	}
+}
